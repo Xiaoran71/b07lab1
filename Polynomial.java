@@ -13,10 +13,20 @@ public class Polynomial{
     }
     public Polynomial add(Polynomial pl){
         int size = coe.length;
-        for(int i = 0; i < size; i++){
-            pl.coe[i] += coe[i];
+        int sizepl = pl.coe.length;
+        double[] ar = new double[Math.max(size, sizepl)];
+        
+        for(int i = 0; i < size; i++)
+        {
+            ar[i] += coe[i];
         }
-        return pl;
+        for(int j = 0; j < sizepl; j++)
+        {
+            ar[j] += pl.coe[j];
+        }
+        Polynomial pll = new Polynomial(ar);
+        return pll;
+        
     }
     public double evaluate(double x){
         int size = coe.length;
